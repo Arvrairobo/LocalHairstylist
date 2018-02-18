@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Personal Hairstylist</title>
+	<link rel="stylesheet" href="style.css" />
+	
+	<div class="header">
+		<h1 style="color:black;">Try out new hairstyle today!</h1>
+		</div>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div style="margin-right:96%; border: 2px solid black; background-color:black;">
+			<a href="#" onclick="App.start('faceOutline');">
+				<h2 style="color:white;">Clear!</h2>
+			</a>
+		</div>
+
+		<div class="right" style="float:right; margin-top:-4%; margin-right:30%; border:dotted black">
+			<!-- Our Main Video Element -->
+			<div class="right-r" style="float:left;">
+
+				<video hidden id="videoElement" height="426" width="640" controls autoplay style="width:100px; height:75px;"></video>
+				<ul>
+					<li><a href="#" onclick="App.start('blonde');"><img src="i/blonde.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('shirly');"><img src="i/shirly.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('groovy');"><img src="i/groovy.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('silverHair');"><img src="i/silverHair.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('bieber');"><img src="i/bieber.png" height="100px" width="100px"></a></li>
+				</ul>
+			</div>
+			<div class="right-l" style="float:right;">
+				<ul>
+					<li><a href="#" onclick="App.start('beard');"><img src="i/beard.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('brownHair');"><img src="i/brownHair.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('shortBlondeHair');"><img src="i/shortBlondeHair.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('oliveGreenHair');"><img src="i/oliveGreenHair.png" height="100px" width="100px"></a></li>
+					<li><a href="#" onclick="App.start('goldHair');"><img src="i/goldHair.png" height="100px" width="100px"></a></li>
+			</div>
+			</ul>
+		</div>
+		<br>
+		<!-- Out Canvas Element for output -->
+		<canvas id="output" height="426" width="515"></canvas>
+
+		<div class="colours" style="display:none;">
+			<div id="red">
+				<input type="range" min=0 max=255 value=190 class="min">
+				<input type="range" min=0 max=255 value=240 class="max">
+			</div>
+			<div id="green">
+				<input type="range" min=0 max=255 value=0 class="min">
+				<input type="range" min=0 max=255 value=120 class="max">
+			</div>
+			<div id="blue">
+				<input type="range" min=0 max=255 value=90 class="min">
+				<input type="range" min=0 max=255 value=190 class="max">
+			</div>
+		</div>
+
+	</div>
+	<script>
+		var video = document.querySelector("#videoElement");
+
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+		if (navigator.getUserMedia) {
+			navigator.getUserMedia({ video: true }, handleVideo, videoError);
+		}
+
+		function handleVideo(stream) {
+			video.src = window.URL.createObjectURL(stream);
+			App.start('faceOutline');
+		}
+
+		function videoError(e) {
+			// do something
+		}
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/ccv.js"></script>
+	<script type="text/javascript" src="scripts/face.js"></script>
+	<script type="text/javascript" src="scripts/scripts.js"></script>
+	<script type="text/javascript" src="scripts/stackblur.js"></script>
+</body>
+
+</html>
